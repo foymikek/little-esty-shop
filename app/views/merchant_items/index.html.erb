@@ -1,12 +1,21 @@
 <h1>Merchant Items Index</h1>
 
-<h2>Enabled Merchant Items</h2>
+<section class="top-5-most-popular-items">
+  <h2>Top 5 Most Popular Items</h2>
+  <ol>
+    <% @merchant.most_popular_items.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  </ol>
+</section>
+
 <section id='enabled-merchant-items'>
+  <h2>Enabled Merchant Items</h2>
   <%= render partial: 'merchant_items', locals: {merchant_items: @merchant.enabled_items} %>
 </section>
 
-<h2>Disabled Merchant Items</h2>
 <section id='disabled-merchant-items'>
+  <h2>Disabled Merchant Items</h2>
   <%= render partial: 'merchant_items', locals: {merchant_items: @merchant.disabled_items} %>
 </section>
 

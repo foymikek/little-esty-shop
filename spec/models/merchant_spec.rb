@@ -70,6 +70,34 @@ RSpec.describe Merchant, type: :model do
       end
     end
 
+    describe 'top_five_items' do
+      it "returns the merchant's top 5 items by revenue" do
+        max = Merchant.create!(name: 'Merch Max')
+        item_4 = max.items.create!(name: 'Item 4', description: 'Item 4 description', unit_price: 15, status: 0)
+        item_5 = max.items.create!(name: 'Item 5', description: 'Item 5 description', unit_price: 20, status: 0)
+        item_6 = max.items.create!(name: 'Item 6', description: 'Item 6 description', unit_price: 25, status: 0)
+        item_7 = max.items.create!(name: 'Item 7', description: 'Item 7 description', unit_price: 30, status: 0)
+        item_8 = max.items.create!(name: 'Item 8', description: 'Item 8 description', unit_price: 35, status: 0)
+        item_9 = max.items.create!(name: 'Item 9', description: 'Item 9 description', unit_price: 40, status: 0)
+
+        sally    = Customer.create!(first_name: 'Sally', last_name: 'Smith')
+
+        invoice_1 = sally.invoices.create!(status: 1, merchant_id: max.id)
+
+        invitm_1  = invoice_1.invoice_items.create!(status: 0, quantity: 1, unit_price: 5, item_id: item_4.id)
+        invitm_2  = invoice_1.invoice_items.create!(status: 2, quantity: 1, unit_price: 10, item_id: item_5.id)
+        invitm_3  = invoice_1.invoice_items.create!(status: 1, quantity: 1, unit_price: 15, item_id: item_6.id)
+        invitm_4  = invoice_1.invoice_items.create!(status: 1, quantity: 1, unit_price: 20, item_id: item_7.id)
+        invitm_5  = invoice_1.invoice_items.create!(status: 1, quantity: 1, unit_price: 25, item_id: item_8.id)
+        invitm_6  = invoice_1.invoice_items.create!(status: 1, quantity: 1, unit_price: 30, item_id: item_9.id)
+
+        expected = [item_9, item_8, item_7, item_6, item_5]
+        actual = max.top_five_items
+
+        expect(actual).to eq(expected)
+      end
+    end
+
     describe 'items_ready_to_ship' do
       it 'returns an array of all the names of my items that have been ordered and have not yet been shipped' do
         max = Merchant.create!(name: 'Merch Max')

@@ -18,6 +18,13 @@ class Merchant < ApplicationRecord
       .limit(5)
   end
 
+  def top_five_items
+    binding.pry
+    # invoices.joins(:transactions).where('transactions.result = ?', 'success')
+
+    # Item.joins(:invoice_items).where('invoice_items.status = 2').select("items.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS item_revenue").group(:id)
+  end
+
   def items_ready_to_ship
     items.joins(:invoice_items).where.not('invoice_items.status = ?', 2)
   end
