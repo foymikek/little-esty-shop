@@ -65,6 +65,7 @@ RSpec.describe "As a admin user" do
         expect(page).to have_content("Username: RyanDBarnett")
         expect(page).to have_content("Username: Yesi-MC")
         expect(page).to have_content("Repo name: little-esty-shop")
+        # expect(page).to have_content("Repo name: little-esty-shop")
       end
     end
   end

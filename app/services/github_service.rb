@@ -12,4 +12,5 @@ class GithubService
     response = connection.get(path)
     parse_data(response)
   end
+
 end
