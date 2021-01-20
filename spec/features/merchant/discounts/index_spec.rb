@@ -62,16 +62,16 @@ RSpec.describe 'As a merchant', type: :feature do
       expect(page).to have_content("Quantity Threshold: #{new_discount.quantity_threshold}")
       expect(page).to have_link("Discount #{new_discount.id}")
     end
-    xit "When I dont enter the correct information, I am promted to try again to complete the discount creation." do
-      new_merchant_discount_path(@alibaba)
-
-      fill_in :discount_percentage, with: thirty
-      fill_in :quantity_threshold, with: seventy_five
-      click_on :submit
-
-      expect(page).to have_content("Discount Information Incorrect, please try again.")
-      expect(current_path).to eq(new_merchant_discount_path(@alibaba))
-    end
+    # xit "When I dont enter the correct information, I am promted to try again to complete the discount creation." do
+    #   new_merchant_discount_path(@alibaba)
+    # 
+    #   fill_in :discount_percentage, with: thirty
+    #   fill_in :quantity_threshold, with: seventy_five
+    #   click_on :submit
+    #
+    #   expect(page).to have_content("Discount Information Incorrect, please try again.")
+    #   expect(current_path).to eq(new_merchant_discount_path(@alibaba))
+    # end
     it "Next to each bulk discount I see a link to delete it, when I click this link it is deleted" do
       visit merchant_discounts_path(@amazon)
 
