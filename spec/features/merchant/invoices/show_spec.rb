@@ -108,7 +108,7 @@ describe 'As a merchant' do
         end
         it "Next to each invoice item I see a link to the show page for the bulk discount that was applied (if any)" do
             visit merchant_invoice_path(@all_birds, @invoice6)
-            # save_and_open_page
+            
             within "#invoice-item-#{@invitm7.id}" do
               expect(page).to have_link('Discount Used')
               click_link('Discount Used')
