@@ -61,14 +61,14 @@ RSpec.describe "As a admin user" do
   end
 end
 
-describe 'Admin Invoices API Information' do
-  skip "should display all github users usernames and commit count" do
-    visit admin_invoices_path
-
-    expect(page).to have_content("Username: cowens87")
-    expect(page).to have_content("Username: foymikek")
-    expect(page).to have_content("Username: RyanDBarnett")
-    expect(page).to have_content("Username: Yesi-MC")
-    expect(page).to have_content("Repo name: little-esty-shop")
-  end
-end
+# describe 'Admin Invoices API Information' do
+#   skip "should display all github users usernames and commit count" do
+#     visit admin_invoices_path
+#
+#     expect(page).to have_content("Username: cowens87")
+#     expect(page).to have_content("Username: foymikek")
+#     expect(page).to have_content("Username: RyanDBarnett")
+#     expect(page).to have_content("Username: Yesi-MC")
+#     expect(page).to have_content("Repo name: little-esty-shop")
+#   end
+# end
